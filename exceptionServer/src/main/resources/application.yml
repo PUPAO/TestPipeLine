@@ -1,0 +1,7 @@
+incident:
+  alert:
+    enabled: true
+    service-name: remine-backend
+    environment: prod
+    discord-webhook-url: ${DISCORD_WEBHOOK_URL:}
+    n8n-webhook-url: ${N8N_WEBHOOK_URL:http://localhost:5678/webhook/spring-incident}

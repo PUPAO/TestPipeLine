@@ -1,0 +1,23 @@
+# 환경변수 및 비밀키
+.env
+*.pem
+*.key
+
+# 런타임 클론 및 임시 테스트 작업 공간 (폴더 구조 유지를 위해 .gitkeep만 추적)
+workspace/*
+!workspace/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+
+# OS & IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.log
