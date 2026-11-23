@@ -60,8 +60,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./workspace:/workspace
-      - ./exceptionServer:/workspace/exceptionServer
+      - ./:/workspace/TestPipeLine
     depends_on:
       postgres:
         condition: service_healthy
