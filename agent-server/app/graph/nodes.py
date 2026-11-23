@@ -143,7 +143,7 @@ async def request_approval_node(state: AgentState) -> dict:
     }
     await save_pending_approval(state["incident_id"], approval_payload)
     await post_approval_card(state.get("discord_thread_id"), approval_payload)
-    return {}
+    return {"retry_count": state.get("retry_count", 0)}
 
 
 async def escalate_node(state: AgentState) -> dict:
@@ -153,4 +153,4 @@ async def escalate_node(state: AgentState) -> dict:
         f"🚨 **자동 복구 한도 초과 ({state['retry_count']}회 실패)** — 수동 확인이 필요합니다.\n"
         f"마지막 실패 로그:\n```\n{(state.get('test_error_log') or '')[:1000]}\n```",
     )
-    return {}
+    return {"retry_count": state.get("retry_count", 0)}
