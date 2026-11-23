@@ -1,13 +1,24 @@
+package com.example.exceptionserver;
+
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.Map;
+
 @RestControllerAdvice
-@RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
 	private final IncidentAlertClient incidentAlertClient;
 
+	public GlobalExceptionHandler(IncidentAlertClient incidentAlertClient) {
+		this.incidentAlertClient = incidentAlertClient;
+	}
+
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity> handleUnhandledException(
+	public ResponseEntity<Object> handleUnhandledException(
 		 Exception ex, HttpServletRequest request) {
-		// 비동기로 Discord 알림 및 n8n 복구 파이프라인 트리거
 		incidentAlertClient.reportAsync(ex, request);
 
 		return ResponseEntity.internalServerError()

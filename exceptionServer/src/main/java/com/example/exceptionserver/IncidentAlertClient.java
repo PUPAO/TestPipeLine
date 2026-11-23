@@ -1,9 +1,8 @@
-package com.example.global.error;
+package com.example.exceptionserver;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -17,12 +16,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-@Slf4j
 @Component
-@RequiredArgsConstructor
 public class IncidentAlertClient {
 
-	private final ObjectMapper objectMapper;
+	private static final Logger log = LoggerFactory.getLogger(IncidentAlertClient.class);
 	private final RestClient restClient = RestClient.create();
 
 	@Value("${incident.alert.enabled:false}")
@@ -76,11 +73,10 @@ public class IncidentAlertClient {
 				 "footer", Map.of("text", "Occurred at " + occurredAt)
 			);
 
-			String payload = objectMapper.writeValueAsString(Map.of("embeds", List.of(embed)));
 			restClient.post()
 				 .uri(discordWebhookUrl)
 				 .contentType(MediaType.APPLICATION_JSON)
-				 .body(payload)
+				 .body(Map.of("embeds", List.of(embed)))
 				 .retrieve()
 				 .toBodilessEntity();
 		} catch (Exception e) {
@@ -105,11 +101,10 @@ public class IncidentAlertClient {
 				 "occurredAt", occurredAt
 			);
 
-			String payload = objectMapper.writeValueAsString(body);
 			restClient.post()
 				 .uri(n8nWebhookUrl)
 				 .contentType(MediaType.APPLICATION_JSON)
-				 .body(payload)
+				 .body(body)
 				 .retrieve()
 				 .toBodilessEntity();
 		} catch (Exception e) {

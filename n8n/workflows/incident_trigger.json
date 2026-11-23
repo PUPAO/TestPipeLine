@@ -1,0 +1,54 @@
+{
+  "name": "Spring Incident Trigger to FastAPI",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "spring-incident",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "a1b2c3d4-1111-4000-8000-000000000001",
+      "name": "Spring Incident Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "webhookId": "spring-incident-webhook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://agent-server:8000/api/v1/incidents",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "a1b2c3d4-2222-4000-8000-000000000002",
+      "name": "Forward to FastAPI Gateway",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [520, 300]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Spring Incident Webhook": {
+      "main": [
+        [
+          {
+            "node": "Forward to FastAPI Gateway",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
