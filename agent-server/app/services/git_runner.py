@@ -24,7 +24,22 @@ async def _run_cmd(cmd: list[str], cwd: Path) -> tuple[int, str, str]:
     )
 
 
-def _apply_hunk_lines_fallback(repo_path: Path, diff_text: str) -> bool:
+def _resolve_service_dir(repo_path: Path, service_subdir: str | None = None) -> tuple[Path, str]:
+    """모노레포 내 Spring Boot 서비스 하위 디렉토리와 상대 경로 접두사를 반환합니다."""
+    settings = get_settings()
+    subdir = (
+        service_subdir
+        or getattr(settings, "TARGET_SERVICE_SUBDIR", None)
+        or "exceptionServer"
+    ).strip("/")
+
+    candidate = repo_path / subdir
+    if subdir and candidate.is_dir():
+        return candidate, subdir
+    return repo_path, ""
+
+
+def _apply_hunk_lines_fallback(repo_path: Path, service_dir: Path, diff_text: str) -> bool:
     """git apply 실패 시 hunk(- 제거 라인 -> + 추가 라인)를 대상 파일에서 찾아 직접 치환합니다."""
     current_file: str | None = None
     removed_lines: list[str] = []
@@ -53,9 +68,15 @@ def _apply_hunk_lines_fallback(repo_path: Path, diff_text: str) -> bool:
 
     changed_files = 0
     for rel_path, rem, add in hunks:
-        target = repo_path / rel_path
-        if not target.exists() or not rem:
+        if not rem:
             continue
+
+        target = repo_path / rel_path
+        if not target.exists():
+            target = service_dir / rel_path
+        if not target.exists():
+            continue
+
         content = target.read_text(encoding="utf-8")
         rem_block = "\n".join(rem)
         add_block = "\n".join(add)
@@ -65,7 +86,6 @@ def _apply_hunk_lines_fallback(repo_path: Path, diff_text: str) -> bool:
             changed_files += 1
             continue
 
-        # 들여쓰기 공백 차이까지 허용하여 라인 단위 매칭 치환
         lines = content.splitlines()
         n = len(rem)
         stripped_rem = [r.strip() for r in rem]
@@ -81,16 +101,16 @@ def _apply_hunk_lines_fallback(repo_path: Path, diff_text: str) -> bool:
 
 
 async def ensure_repo_cloned() -> Path:
-    """로컬/볼륨에 저장소가 이미 있으면 clone을 건너뛰고, 없으면 GitHub에서 clone합니다."""
+    """로컬/볼륨에 모노레포 저장소가 이미 있으면 재사용하고, 없으면 GitHub에서 clone합니다."""
     settings = get_settings()
     repo_path = settings.target_repo_path
     repo_path.parent.mkdir(parents=True, exist_ok=True)
 
+    await _run_cmd(["git", "config", "--global", "--add", "safe.directory", "*"], cwd=repo_path.parent)
+
     if repo_path.exists() and any(repo_path.iterdir()):
         if not (repo_path / ".git").exists():
             await _run_cmd(["git", "init", "-b", settings.TARGET_BASE_BRANCH], cwd=repo_path)
-            await _run_cmd(["git", "config", "user.name", "AI Incident Bot"], cwd=repo_path)
-            await _run_cmd(["git", "config", "user.email", "ai-incident-bot@users.noreply.github.com"], cwd=repo_path)
             await _run_cmd(["git", "add", "-A"], cwd=repo_path)
             await _run_cmd(["git", "commit", "-m", "chore: initialize local workspace repo"], cwd=repo_path)
     elif not (repo_path / ".git").exists():
@@ -101,6 +121,9 @@ async def ensure_repo_cloned() -> Path:
         )
         if code != 0:
             raise RuntimeError(f"Git clone failed: {err}")
+
+    name_code, name_out, _ = await _run_cmd(["git", "config", "user.name"], cwd=repo_path)
+    if name_code != 0 or not name_out.strip():
         await _run_cmd(["git", "config", "user.name", "AI Incident Bot"], cwd=repo_path)
         await _run_cmd(["git", "config", "user.email", "ai-incident-bot@users.noreply.github.com"], cwd=repo_path)
 
@@ -114,17 +137,21 @@ async def apply_patch_and_run_tests(
     incident_id: str,
     patch_diff: str,
     affected_tests: list[str],
+    service_subdir: str = "exceptionServer",
 ) -> tuple[bool, str, str, int]:
     """
-    임시 브랜치에 패치를 적용하고 선별된 JUnit 테스트만 실행합니다.
+    모노레포 루트에서 임시 브랜치를 생성해 하위 서비스 디렉토리에 패치를 적용하고 선별 테스트를 실행합니다.
     Returns: (passed, branch_name, error_log, duration_ms)
     """
     settings = get_settings()
     repo_path = await ensure_repo_cloned()
+    service_dir, subdir = _resolve_service_dir(repo_path, service_subdir)
     branch_name = f"fix/incident-{incident_id[:8]}"
 
-    # 1. 깨끗한 base 브랜치 상태에서 임시 패치 브랜치 생성
-    has_origin, _, _ = await _run_cmd(["git", "rev-parse", "--verify", f"origin/{settings.TARGET_BASE_BRANCH}"], cwd=repo_path)
+    has_origin, _, _ = await _run_cmd(
+        ["git", "rev-parse", "--verify", f"origin/{settings.TARGET_BASE_BRANCH}"],
+        cwd=repo_path,
+    )
     base_ref = f"origin/{settings.TARGET_BASE_BRANCH}" if has_origin == 0 else settings.TARGET_BASE_BRANCH
 
     await _run_cmd(["git", "reset", "--hard"], cwd=repo_path)
@@ -138,18 +165,22 @@ async def apply_patch_and_run_tests(
     patch_file = repo_path / ".ai_incident.patch"
     patch_file.write_text(normalized_diff, encoding="utf-8")
 
-    # 2. git apply 실행 (--recount -> --3way -> 라인 치환 폴백 순서로 시도)
+    has_subdir_prefix = bool(subdir) and (
+        f"--- a/{subdir}/" in normalized_diff or f"+++ b/{subdir}/" in normalized_diff
+    )
+    dir_args = [f"--directory={subdir}"] if (subdir and not has_subdir_prefix) else []
+
     code, _, err = await _run_cmd(
-        ["git", "apply", "--recount", "--ignore-whitespace", str(patch_file)],
+        ["git", "apply", *dir_args, "--recount", "--ignore-whitespace", str(patch_file)],
         cwd=repo_path,
     )
     if code != 0:
         code, _, err2 = await _run_cmd(
-            ["git", "apply", "--3way", "--recount", str(patch_file)],
+            ["git", "apply", *dir_args, "--3way", "--recount", str(patch_file)],
             cwd=repo_path,
         )
         if code != 0:
-            if _apply_hunk_lines_fallback(repo_path, normalized_diff):
+            if _apply_hunk_lines_fallback(repo_path, service_dir, normalized_diff):
                 logger.info("Applied patch via line-matching fallback for %s", incident_id[:8])
                 code = 0
             else:
@@ -160,8 +191,7 @@ async def apply_patch_and_run_tests(
     if code != 0:
         return False, branch_name, f"git apply failed:\n{err}", 0
 
-    # 3. Gradle 실행 권한 보장 및 선별 회귀 테스트 실행
-    gradlew = repo_path / "gradlew"
+    gradlew = service_dir / "gradlew"
     if gradlew.exists():
         gradlew.chmod(0o755)
         gradle_bin = "./gradlew"
@@ -176,9 +206,9 @@ async def apply_patch_and_run_tests(
     else:
         cmd = [gradle_bin, "testClasses", "--no-daemon"]
 
-    logger.info("Running selective regression command: %s", " ".join(cmd))
+    logger.info("Running selective regression command in %s: %s", service_dir, " ".join(cmd))
     start_ts = time.perf_counter()
-    test_code, out, test_err = await _run_cmd(cmd, cwd=repo_path)
+    test_code, out, test_err = await _run_cmd(cmd, cwd=service_dir)
     duration_ms = int((time.perf_counter() - start_ts) * 1000)
 
     if test_code == 0:
@@ -197,7 +227,7 @@ async def create_github_pr(
     executed_tests_count: int,
     total_tests_count: int,
 ) -> str:
-    """Discord 승인 버튼 클릭 시 패치 브랜치를 푸시하고 GitHub PR을 생성합니다."""
+    """Discord 승인 버튼 클릭 시 모노레포 패치 브랜치를 푸시하고 GitHub PR을 생성합니다."""
     settings = get_settings()
     repo_path = await ensure_repo_cloned()
 
@@ -208,8 +238,14 @@ async def create_github_pr(
     if code != 0 and "nothing to commit" not in err:
         raise RuntimeError(f"Git commit failed: {err}")
 
+    push_target = (
+        f"https://x-access-token:{settings.GITHUB_TOKEN}@github.com/"
+        f"{settings.TARGET_REPO_OWNER}/{settings.TARGET_REPO_NAME}.git"
+        if settings.GITHUB_TOKEN
+        else "origin"
+    )
     push_code, _, push_err = await _run_cmd(
-        ["git", "push", "-u", "origin", branch_name, "--force"],
+        ["git", "push", "-u", push_target, f"{branch_name}:{branch_name}", "--force"],
         cwd=repo_path,
     )
     if push_code != 0:
