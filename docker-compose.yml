@@ -61,6 +61,7 @@ services:
       - "8000:8000"
     volumes:
       - ./workspace:/workspace
+      - ./exceptionServer:/workspace/exceptionServer
     depends_on:
       postgres:
         condition: service_healthy
