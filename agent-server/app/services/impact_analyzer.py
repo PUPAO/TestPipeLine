@@ -16,7 +16,7 @@ def _get_service_root(repo_path: Path) -> Path:
     return repo_path
 
 
-def analyze_impact(repo_path: Path, patch_diff: str) -> tuple[list[str], int]:
+def analyze_test_impact(repo_path: Path, patch_diff: str) -> tuple[list[str], int]:
     """
     변경된 Java 클래스를 역추적하여 연관된 JUnit 테스트 FQCN 목록과 전체 테스트 수를 반환합니다.
     """
@@ -29,7 +29,7 @@ def analyze_impact(repo_path: Path, patch_diff: str) -> tuple[list[str], int]:
         return [], 0
 
     # 1. 전체 테스트 클래스 스캔 (FQCN 매핑)
-    all_tests: dict[str, str] = {}  # SimpleName -> FQCN
+    all_tests: dict[str, str] = {}
     test_contents: dict[str, str] = {}
     for tf in test_dir.rglob("*.java"):
         if not (tf.name.endswith("Test.java") or tf.name.endswith("Tests.java")):
@@ -83,3 +83,6 @@ def analyze_impact(repo_path: Path, patch_diff: str) -> tuple[list[str], int]:
         total_tests_count,
     )
     return sorted_tests, total_tests_count
+
+
+analyze_impact = analyze_test_impact
