@@ -1,0 +1,180 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.workschedule"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="36" />
+10
+11    <uses-permission android:name="android.permission.READ_CALENDAR" />
+11-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:4:5-72
+11-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:4:22-69
+12
+13    <permission
+13-->[androidx.core:core:1.13.1] /Users/hagjun/.gradle/caches/8.13/transforms/e97c10c52ab11304386724ac535fb4c5/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+14        android:name="com.example.workschedule.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+14-->[androidx.core:core:1.13.1] /Users/hagjun/.gradle/caches/8.13/transforms/e97c10c52ab11304386724ac535fb4c5/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+15        android:protectionLevel="signature" />
+15-->[androidx.core:core:1.13.1] /Users/hagjun/.gradle/caches/8.13/transforms/e97c10c52ab11304386724ac535fb4c5/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+16
+17    <uses-permission android:name="com.example.workschedule.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+17-->[androidx.core:core:1.13.1] /Users/hagjun/.gradle/caches/8.13/transforms/e97c10c52ab11304386724ac535fb4c5/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+17-->[androidx.core:core:1.13.1] /Users/hagjun/.gradle/caches/8.13/transforms/e97c10c52ab11304386724ac535fb4c5/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+18
+19    <application
+19-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:5:5-38:19
+20        android:allowBackup="true"
+20-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:6:13-39
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.13.1] /Users/hagjun/.gradle/caches/8.13/transforms/e97c10c52ab11304386724ac535fb4c5/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+22        android:dataExtractionRules="@xml/data_extraction_rules"
+22-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:7:13-69
+23        android:debuggable="true"
+24        android:extractNativeLibs="false"
+25        android:fullBackupContent="@xml/backup_rules"
+25-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:8:13-58
+26        android:icon="@mipmap/ic_launcher"
+26-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:9:13-47
+27        android:label="@string/app_name"
+27-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:10:13-45
+28        android:roundIcon="@mipmap/ic_launcher_round"
+28-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:11:13-58
+29        android:supportsRtl="true"
+29-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:12:13-39
+30        android:theme="@style/Theme.WorkSchedule" >
+30-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:13:13-54
+31        <activity
+31-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:14:9-24:20
+32            android:name="com.example.workschedule.MainActivity"
+32-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:15:17-45
+33            android:exported="true"
+33-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:16:17-40
+34            android:label="@string/app_name"
+34-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:17:17-49
+35            android:theme="@style/Theme.WorkSchedule" >
+35-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:18:17-58
+36            <intent-filter>
+36-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:19:13-23:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:20:17-68
+37-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:20:25-66
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:22:17-76
+39-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:22:27-74
+40            </intent-filter>
+41        </activity>
+42
+43        <receiver
+43-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:25:9-37:20
+44            android:name="com.example.workschedule.ShiftCalendarWidgetProvider"
+44-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:26:17-60
+45            android:exported="true" >
+45-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:27:17-40
+46            <intent-filter>
+46-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:28:13-33:29
+47                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+47-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:29:17-84
+47-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:29:25-81
+48                <action android:name="com.example.shiftcalendar.ACTION_PREV_MONTH" />
+48-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:30:17-86
+48-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:30:25-83
+49                <action android:name="com.example.shiftcalendar.ACTION_NEXT_MONTH" />
+49-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:31:17-86
+49-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:31:25-83
+50                <action android:name="com.example.shiftcalendar.ACTION_TODAY_MONTH" />
+50-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:32:17-87
+50-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:32:25-84
+51            </intent-filter>
+52
+53            <meta-data
+53-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:34:13-36:74
+54                android:name="android.appwidget.provider"
+54-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:35:21-62
+55                android:resource="@xml/shift_calendar_widget_info" />
+55-->/Users/hagjun/IdeaProjects/TestPipeLine/workSchedule/app/src/main/AndroidManifest.xml:36:21-71
+56        </receiver>
+57
+58        <activity
+58-->[androidx.compose.ui:ui-tooling-android:1.7.0] /Users/hagjun/.gradle/caches/8.13/transforms/768ec3e9cfd9cf3e55e15d16e0b634c4/transformed/ui-tooling-release/AndroidManifest.xml:23:9-25:39
+59            android:name="androidx.compose.ui.tooling.PreviewActivity"
+59-->[androidx.compose.ui:ui-tooling-android:1.7.0] /Users/hagjun/.gradle/caches/8.13/transforms/768ec3e9cfd9cf3e55e15d16e0b634c4/transformed/ui-tooling-release/AndroidManifest.xml:24:13-71
+60            android:exported="true" />
+60-->[androidx.compose.ui:ui-tooling-android:1.7.0] /Users/hagjun/.gradle/caches/8.13/transforms/768ec3e9cfd9cf3e55e15d16e0b634c4/transformed/ui-tooling-release/AndroidManifest.xml:25:13-36
+61        <activity
+61-->[androidx.compose.ui:ui-test-manifest:1.7.0] /Users/hagjun/.gradle/caches/8.13/transforms/702b95c4b1d43e5e77d5f459fbddcb8c/transformed/ui-test-manifest-1.7.0/AndroidManifest.xml:23:9-25:39
+62            android:name="androidx.activity.ComponentActivity"
+62-->[androidx.compose.ui:ui-test-manifest:1.7.0] /Users/hagjun/.gradle/caches/8.13/transforms/702b95c4b1d43e5e77d5f459fbddcb8c/transformed/ui-test-manifest-1.7.0/AndroidManifest.xml:24:13-63
+63            android:exported="true" />
+63-->[androidx.compose.ui:ui-test-manifest:1.7.0] /Users/hagjun/.gradle/caches/8.13/transforms/702b95c4b1d43e5e77d5f459fbddcb8c/transformed/ui-test-manifest-1.7.0/AndroidManifest.xml:25:13-36
+64
+65        <provider
+65-->[androidx.emoji2:emoji2:1.3.0] /Users/hagjun/.gradle/caches/8.13/transforms/60ec6b2a779c1bdb940ac90511ced6a5/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+66            android:name="androidx.startup.InitializationProvider"
+66-->[androidx.emoji2:emoji2:1.3.0] /Users/hagjun/.gradle/caches/8.13/transforms/60ec6b2a779c1bdb940ac90511ced6a5/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+67            android:authorities="com.example.workschedule.androidx-startup"
+67-->[androidx.emoji2:emoji2:1.3.0] /Users/hagjun/.gradle/caches/8.13/transforms/60ec6b2a779c1bdb940ac90511ced6a5/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+68            android:exported="false" >
+68-->[androidx.emoji2:emoji2:1.3.0] /Users/hagjun/.gradle/caches/8.13/transforms/60ec6b2a779c1bdb940ac90511ced6a5/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+69            <meta-data
+69-->[androidx.emoji2:emoji2:1.3.0] /Users/hagjun/.gradle/caches/8.13/transforms/60ec6b2a779c1bdb940ac90511ced6a5/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+70                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+70-->[androidx.emoji2:emoji2:1.3.0] /Users/hagjun/.gradle/caches/8.13/transforms/60ec6b2a779c1bdb940ac90511ced6a5/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+71                android:value="androidx.startup" />
+71-->[androidx.emoji2:emoji2:1.3.0] /Users/hagjun/.gradle/caches/8.13/transforms/60ec6b2a779c1bdb940ac90511ced6a5/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+72            <meta-data
+72-->[androidx.lifecycle:lifecycle-process:2.8.3] /Users/hagjun/.gradle/caches/8.13/transforms/19a1d83f84f1b043362f96b749e7fd17/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:29:13-31:52
+73                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+73-->[androidx.lifecycle:lifecycle-process:2.8.3] /Users/hagjun/.gradle/caches/8.13/transforms/19a1d83f84f1b043362f96b749e7fd17/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:30:17-78
+74                android:value="androidx.startup" />
+74-->[androidx.lifecycle:lifecycle-process:2.8.3] /Users/hagjun/.gradle/caches/8.13/transforms/19a1d83f84f1b043362f96b749e7fd17/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:31:17-49
+75            <meta-data
+75-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+76                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+76-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+77                android:value="androidx.startup" />
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+78        </provider>
+79
+80        <receiver
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+81            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+81-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+82            android:directBootAware="false"
+82-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+83            android:enabled="true"
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+84            android:exported="true"
+84-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+85            android:permission="android.permission.DUMP" >
+85-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+86            <intent-filter>
+86-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+87                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+87-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+87-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+88            </intent-filter>
+89            <intent-filter>
+89-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+90                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+90-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+90-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+91            </intent-filter>
+92            <intent-filter>
+92-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+93                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+94            </intent-filter>
+95            <intent-filter>
+95-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+96                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+96-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+96-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/hagjun/.gradle/caches/8.13/transforms/8643a3039f2e9bf378f1c6d037a0f48d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+97            </intent-filter>
+98        </receiver>
+99    </application>
+100
+101</manifest>
