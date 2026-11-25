@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/xml_shift_calendar_widget_info.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/xml/shift_calendar_widget_info.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.workschedule.app-debug-46:/layout_widget_day_cell.xml.flat",
+        "source": "com.example.workschedule.app-main-48:/layout/widget_day_cell.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/drawable_widget_bg.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/drawable/widget_bg.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/drawable_badge_bi.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/drawable/badge_bi.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/xml_backup_rules.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/drawable_badge_ju.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/drawable/badge_ju.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/layout_widget_shift_calendar.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/layout/widget_shift_calendar.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-anydpi/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/drawable_today_circle.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/drawable/today_circle.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/drawable_badge_ya.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/drawable/badge_ya.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/layout_widget_day_cell.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/layout/widget_day_cell.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-anydpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-debug-46:/drawable_badge_hyu.xml.flat",
+        "source": "/Users/hagjun/.gradle/daemon/8.13/com.example.workschedule.app-main-48:/drawable/badge_hyu.xml"
+    }
+]
